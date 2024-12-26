@@ -1,3 +1,4 @@
+import { FormActionComponent } from "./components/FormActionComponent/FormActionComponent";
 import viteLogo from "/vite.svg";
 
 export const App = () => {
@@ -13,11 +14,11 @@ export const App = () => {
       {/* Main Content */}
       <main className="flex-grow container mx-auto p-4">
         <div className="bg-gray-100 p-6 rounded shadow-md">
-          <h2 className="text-lg font-semibold mb-4">Welcome User</h2>
+          <h2 className="text-lg font-semibold mb-4">React 19 Actions</h2>
           <p className="text-gray-700">
-            This is a placeholder for your content. Replace this with your
-            components.
+            Actions - Pending state, optimistic updates, error handling, forms.
           </p>
+          <FormActionComponent />
         </div>
       </main>
 
