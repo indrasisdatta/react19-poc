@@ -1,22 +1,39 @@
-import React, { useActionState, useOptimistic } from "react";
+import React, { useActionState, useOptimistic, useState } from "react";
+import { FormInputs } from "./FormInputs";
+
+type User = {
+  fullName: string | null;
+  age: string | null;
+};
 
 export const FormActionComponent = () => {
-  const [optimisticData, setOptimisticData] = useOptimistic({
-    fullName: "",
-    age: "",
-  });
+  const [personalizedMsg, setPersonalizedMsg] = useState("");
+  const [optimisticData, addOptimisticData] = useOptimistic(
+    personalizedMsg,
+    // updateFn
+    (currentState: any, optimisticValue: any) => {
+      // Merge and return new state with optimistic value
+      return [...currentState, optimisticValue];
+    }
+  );
 
-  const submitDataAction = async (previousState, formData) => {
+  const submitDataAction = async (previousState: any, formData: FormData) => {
     console.log(
       "Submit action: ",
       previousState,
       formData.get("fullName"),
       formData.get("age")
     );
-    setOptimisticData({
-      fullName: formData.get("fullName"),
-      age: formData.get("age"),
-    });
+    setPersonalizedMsg(
+      `${formData.get("fullName")} is ${formData.get("age")} years old..`
+    );
+    addOptimisticData(
+      `${formData.get("fullName")} is ${formData.get("age")} years old`
+    );
+    // setOptimisticData({
+    //   fullName: formData.get("fullName") as string | null,
+    //   age: formData.get("age") as string | null,
+    // });
     await new Promise((res) => setTimeout(res, 1000));
     // return null;
     return "Invalid form data";
@@ -28,18 +45,11 @@ export const FormActionComponent = () => {
   );
 
   return (
-    <div>
+    <div className="space-y-12s">
       <form action={submitAction}>
-        <input type="text" name="fullName" placeholder="Name" />
-        <input type="text" name="age" placeholder="Age" />
-        <button type="submit" disabled={isPending}>
-          Submit
-        </button>
-        <p>{isPending ? "Loading..." : error}</p>
+        <FormInputs error={error} />
       </form>
-      <p>Optimistic update:</p>
-      <p>Name: {optimisticData.fullName}</p>
-      <p>Age: {optimisticData.age}</p>
+      {optimisticData && <p>Optimistic update message: {optimisticData}</p>}
     </div>
   );
 };

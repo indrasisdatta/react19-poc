@@ -11,11 +11,9 @@
     "check_old": "svelte-check --tsconfig ./tsconfig.json && tsc -p tsconfig.node.json"
   },
   "devDependencies": {
-    "tslib": "^2.8.1",
-    "typescript": "~5.6.2",
-    "vite": "^6.0.3",
     "@sveltejs/vite-plugin-svelte": "^5.0.2",
     "@tsconfig/svelte": "^5.0.4",
+    "@types/form-data": "^2.5.2",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
     "@typescript-eslint/eslint-plugin": "^8.18.1",
@@ -23,7 +21,10 @@
     "@vitejs/plugin-react": "^4.3.4",
     "svelte": "^5.14.3",
     "svelte-check": "^4.1.1",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "tslib": "^2.8.1",
+    "typescript": "~5.6.2",
+    "vite": "^6.0.3"
   },
   "dependencies": {
     "react": "^19.0.0",
