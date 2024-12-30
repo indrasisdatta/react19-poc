@@ -1,5 +1,4 @@
 import { FormActionComponent } from "./components/FormActionComponent/FormActionComponent";
-import viteLogo from "/vite.svg";
 
 export const App = () => {
   return (
