@@ -1,5 +1,12 @@
-import React, { useActionState, useOptimistic, useState } from "react";
+import React, {
+  Suspense,
+  useActionState,
+  useOptimistic,
+  useState,
+} from "react";
 import { FormInputs } from "./FormInputs";
+import { ProductsList } from "./ProductsList";
+import { getProducts } from "../../api/ApplicationAPI";
 
 type User = {
   fullName: string | null;
@@ -44,12 +51,17 @@ export const FormActionComponent = () => {
     null
   );
 
+  const productsPromise = getProducts();
+
   return (
     <div className="space-y-12s">
-      <form action={submitAction}>
+      <form action={submitAction} className="w-full max-w-lg">
         <FormInputs error={error} />
       </form>
       {optimisticData && <p>Optimistic update message: {optimisticData}</p>}
+      <Suspense fallback={<p>Loading...</p>}>
+        <ProductsList productsPromise={productsPromise} />
+      </Suspense>
     </div>
   );
 };
