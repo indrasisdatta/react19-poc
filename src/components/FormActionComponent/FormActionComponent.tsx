@@ -6,7 +6,7 @@ import React, {
 } from "react";
 import { FormInputs } from "./FormInputs";
 import { ProductsList } from "./ProductsList";
-import { getProducts } from "../../api/ApplicationAPI";
+import { getProducts, getProductsError } from "../../api/ApplicationAPI";
 
 type User = {
   fullName: string | null;
@@ -52,6 +52,7 @@ export const FormActionComponent = () => {
   );
 
   const productsPromise = getProducts();
+  // const productsPromise = getProductsError();
 
   return (
     <div className="space-y-12s">

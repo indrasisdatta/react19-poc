@@ -19,3 +19,16 @@ export const getProducts = async (): Promise<ApiType> => {
     };
   });
 };
+
+export const getProductsError = async (): Promise<ApiType> => {
+  return new Promise<ApiType>((resolve, reject) => {
+    reject("Invalid product");
+  }).catch((error) => {
+    console.log("Catch error: ", error);
+    return {
+      status: 0,
+      data: null,
+      error,
+    };
+  });
+};
