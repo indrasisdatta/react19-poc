@@ -59,6 +59,7 @@ export const FormActionComponent = () => {
       <form action={submitAction} className="w-full max-w-lg">
         <FormInputs error={error} />
       </form>
+      <hr />
       {optimisticData && <p>Optimistic update message: {optimisticData}</p>}
       <Suspense fallback={<p>Loading...</p>}>
         <ProductsList productsPromise={productsPromise} />
