@@ -25,22 +25,15 @@ export const FormActionComponent = () => {
   );
 
   const submitDataAction = async (previousState: any, formData: FormData) => {
-    console.log(
-      "Submit action: ",
-      previousState,
-      formData.get("fullName"),
-      formData.get("age")
-    );
-    setPersonalizedMsg(
-      `${formData.get("fullName")} is ${formData.get("age")} years old..`
-    );
-    addOptimisticData(
-      `${formData.get("fullName")} is ${formData.get("age")} years old`
-    );
-    // setOptimisticData({
-    //   fullName: formData.get("fullName") as string | null,
-    //   age: formData.get("age") as string | null,
-    // });
+    const fullName = formData.get("fullName");
+    const age = formData.get("age");
+
+    console.log("Submit action: ", previousState, fullName, age);
+
+    const message = `${fullName} is ${age} years old`;
+    setPersonalizedMsg(message + "..");
+    addOptimisticData(message);
+
     await new Promise((res) => setTimeout(res, 1000));
     // return null;
     return "Invalid form data";

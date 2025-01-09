@@ -5,9 +5,24 @@ export const getProducts = async (): Promise<ApiType> => {
     resolve({
       status: 1,
       data: [
-        { id: 1, title: "Product A" },
-        { id: 2, title: "Product B" },
-        { id: 3, title: "Product C" },
+        {
+          id: 1,
+          title: "Product A",
+          image:
+            "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/1.png",
+        },
+        {
+          id: 2,
+          title: "Product B",
+          image:
+            "https://cdn.dummyjson.com/products/images/groceries/Juice/1.png",
+        },
+        {
+          id: 3,
+          title: "Product C",
+          image:
+            "https://cdn.dummyjson.com/products/images/groceries/Juice/2.png",
+        },
       ],
       error: null,
     });

@@ -21,18 +21,25 @@ export const ProductsList = ({
     /* Success state */
     if (products?.data && products?.data?.length > 0) {
       return (
-        <ul>
+        <ul className="space-y-4">
           {products.data.map((p) => (
-            <li key={p.id}>{p.title}</li>
+            <li key={p.id} className="flex items-center gap-4">
+              <img
+                src={p.image}
+                alt={p.title}
+                className="w-16 h-16 object-cover"
+              />
+              <span className="text-gray-800">{p.title}</span>
+            </li>
           ))}
         </ul>
       );
     }
-    return <p>No products found</p>;
+    return <p className="text-red-500">No products found</p>;
   };
 
   return (
-    <div className="bg-blue-300">
+    <div className="bg-gray-200">
       <h4>ProductsList</h4>
       {renderProducts()}
     </div>
