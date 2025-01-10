@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import { use } from "react";
 import type { ApiType } from "../../types/Api";
 
 export const ProductsList = ({
@@ -9,7 +9,7 @@ export const ProductsList = ({
   const products = use(productsPromise);
   console.log("Products with use: ", products);
 
-  const renderProducts = () => {
+  const renderProduct = () => {
     /* Error case */
     if (products) {
       if (products?.status === 0) {
@@ -39,9 +39,9 @@ export const ProductsList = ({
   };
 
   return (
-    <div className="bg-gray-200">
-      <h4>ProductsList</h4>
-      {renderProducts()}
+    <div>
+      <h4 className="text-md font-semibold mb-4">ProductsList</h4>
+      <div className="bg-gray-200 w-1/2">{renderProduct()}</div>
     </div>
   );
 };
